@@ -38,5 +38,7 @@ private:
 	wxButton* button9 = nullptr;
 	wxButton* mutliplyBtn = nullptr;
 
+	// 4th row buttons
+	wxButton* binBtn = nullptr;
 };
 

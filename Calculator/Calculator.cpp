@@ -30,6 +30,9 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	button8 = new wxButton(this, 8, "8", wxPoint(130, 100), wxSize(50, 50));
 	button9 = new wxButton(this, 9, "9", wxPoint(180, 100), wxSize(50, 50));
 	mutliplyBtn = new wxButton(this, 1000, "*", wxPoint(230, 100), wxSize(50, 50));
+
+	// 4th row buttons
+	binBtn = new wxButton(this, 500, "bin", wxPoint(30, 50), wxSize(50, 50));
 }
 
 Calculator::~Calculator()
