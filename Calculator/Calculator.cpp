@@ -20,6 +20,7 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	// 2nd row buttons
 	decBtn = new wxButton(this, 300, "dec", wxPoint(30, 150), wxSize(50, 50));
 	button4 = new wxButton(this, 4, "4", wxPoint(80, 150), wxSize(50, 50));
+	button5 = new wxButton(this, 5, "5", wxPoint(130, 150), wxSize(50, 50));
 }
 
 Calculator::~Calculator()
