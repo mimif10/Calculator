@@ -10,5 +10,8 @@ public:
 	~App();
 
 	virtual bool OnInit(); // to be able to inherit from wxApp
+
+private: // private variable for the frame
+	Calculator* windowFrame = nullptr; // tells the wxApp/Launcher to display the window
 };
 
