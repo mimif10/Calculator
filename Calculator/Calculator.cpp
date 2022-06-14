@@ -26,6 +26,13 @@ EVT_BUTTON(8, Calculator::OnButtonClicked)
 EVT_BUTTON(9, Calculator::OnButtonClicked)
 EVT_BUTTON(1000, Calculator::OnButtonClicked) // multiply
 
+// 4th row
+EVT_BUTTON(500, Calculator::OnButtonClicked) // bin
+EVT_BUTTON(600, Calculator::OnButtonClicked) // (-)
+EVT_BUTTON(700, Calculator::OnButtonClicked) // mod
+EVT_BUTTON(800, Calculator::OnButtonClicked) // equal
+EVT_BUTTON(900, Calculator::OnButtonClicked) // divide
+
 wxEND_EVENT_TABLE()
 
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
@@ -175,6 +182,31 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		case 1000: // multiply button
 		{
 			textBox->AppendText(" * ");
+			break;
+		}
+		case 500: // bin button
+		{
+			textBox->AppendText("bin ");
+			break;
+		}
+		case 600: // neg button
+		{
+			textBox->AppendText("-");
+			break;
+		}
+		case 700: // mod button
+		{
+			textBox->AppendText(" mod ");
+			break;
+		}
+		case 800: // equal button
+		{
+			textBox->AppendText(" = ");
+			break;
+		}
+		case 900: // divide button
+		{
+			textBox->AppendText(" / ");
 			break;
 		}
 	}
