@@ -14,6 +14,9 @@ private:
 	wxTextCtrl* textBox = nullptr;
 
 	// Add buttons to the window 
+
+	wxButton* clearBtn = nullptr;
+
 	// 1st row buttons
 	wxButton* button0 = nullptr;
 	wxButton* button1 = nullptr;
