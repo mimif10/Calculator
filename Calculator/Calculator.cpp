@@ -36,6 +36,7 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	negBtn = new wxButton(this, 600, "(-)", wxPoint(80, 50), wxSize(50, 50));
 	modBtn = new wxButton(this, 700, "mod", wxPoint(130, 50), wxSize(50, 50));
 	equalBtn = new wxButton(this, 800, "=", wxPoint(180, 50), wxSize(50, 50));
+	divideBtn = new wxButton(this, 900, "/", wxPoint(230, 50), wxSize(50, 50));
 
 }
 

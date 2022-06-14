@@ -43,6 +43,7 @@ private:
 	wxButton* negBtn = nullptr;
 	wxButton* modBtn = nullptr;
 	wxButton* equalBtn = nullptr;
+	wxButton* divideBtn = nullptr;
 
 };
 
