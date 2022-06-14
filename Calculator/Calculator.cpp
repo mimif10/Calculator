@@ -7,6 +7,7 @@ EVT_BUTTON(200, Calculator::OnButtonClicked) // and link each button eith the ID
 EVT_BUTTON(0, Calculator::OnButtonClicked)
 EVT_BUTTON(1, Calculator::OnButtonClicked)
 EVT_BUTTON(2, Calculator::OnButtonClicked)
+EVT_BUTTON(3, Calculator::OnButtonClicked)
 
 wxEND_EVENT_TABLE()
 
@@ -102,6 +103,18 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 			else
 			{
 				textBox->AppendText("2");
+			}
+			break;
+		}
+		case 3:
+		{
+			if (textBox->GetValue() == "0")
+			{
+				textBox->SetValue(button3->GetLabel());
+			}
+			else
+			{
+				textBox->AppendText("3");
 			}
 			break;
 		}
