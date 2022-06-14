@@ -8,6 +8,15 @@ public:
 
 	~Calculator();
 
+	// All events that are not customed have a type: wxCommand Event (do something event)
+	// wxCommand Event - function that takes wxCommand Event as an argument
+	// button Click event - function that handles the button
+	void OnButtonClicked(wxCommandEvent& event);
+
+	// wxWidgets provides tools to handle events for us: 
+	// include the macro declare event table below
+	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
+
 private:
 	// Window Components 
 	// Add a Text Box a the top to the window 

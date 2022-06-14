@@ -1,5 +1,10 @@
 #include "Calculator.h"
 
+// implement Event Table (begin and end)
+wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
+
+wxEND_EVENT_TABLE()
+
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
 {
@@ -44,4 +49,10 @@ Calculator::~Calculator()
 {
 	
 	
+}
+
+// button Click event - function that handles the button 
+void Calculator::OnButtonClicked(wxCommandEvent& event)
+{
+
 }
