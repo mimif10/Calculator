@@ -23,5 +23,8 @@ private:
 	wxButton* button2 = nullptr;
 	wxButton* button3 = nullptr;
 	wxButton* addBtn = nullptr;
+
+	// 2nd row buttons
+	wxButton* decBtn = nullptr;
 };
 
