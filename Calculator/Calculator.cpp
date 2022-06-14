@@ -6,6 +6,7 @@ wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the even
 EVT_BUTTON(200, Calculator::OnButtonClicked) // and link each button eith the ID being clicked to the function we want to call 
 EVT_BUTTON(0, Calculator::OnButtonClicked)
 EVT_BUTTON(1, Calculator::OnButtonClicked)
+EVT_BUTTON(2, Calculator::OnButtonClicked)
 
 wxEND_EVENT_TABLE()
 
@@ -89,6 +90,18 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 			else
 			{
 				textBox->AppendText("1");
+			}
+			break;
+		}
+		case 2:
+		{
+			if (textBox->GetValue() == "0")
+			{
+				textBox->SetValue(button2->GetLabel());
+			}
+			else
+			{
+				textBox->AppendText("2");
 			}
 			break;
 		}
