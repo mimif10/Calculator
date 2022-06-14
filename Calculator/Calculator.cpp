@@ -22,6 +22,8 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	button4 = new wxButton(this, 4, "4", wxPoint(80, 150), wxSize(50, 50));
 	button5 = new wxButton(this, 5, "5", wxPoint(130, 150), wxSize(50, 50));
 	button6 = new wxButton(this, 6, "6", wxPoint(180, 150), wxSize(50, 50));
+	substractBtn = new wxButton(this, 1100, "-", wxPoint(230, 150), wxSize(50, 50));
+
 }
 
 Calculator::~Calculator()
