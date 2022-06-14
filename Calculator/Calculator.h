@@ -35,7 +35,7 @@ private:
 	wxButton* hexBtn = nullptr;
 	wxButton* button7 = nullptr;
 	wxButton* button8 = nullptr;
-
+	wxButton* button9 = nullptr;
 
 };
 
