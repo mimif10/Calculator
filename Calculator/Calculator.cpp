@@ -21,6 +21,9 @@ EVT_BUTTON(1100, Calculator::OnButtonClicked) // substract button
 
 //3rd row
 EVT_BUTTON(400, Calculator::OnButtonClicked) // hex button
+EVT_BUTTON(7, Calculator::OnButtonClicked)
+EVT_BUTTON(8, Calculator::OnButtonClicked)
+EVT_BUTTON(9, Calculator::OnButtonClicked)
 
 wxEND_EVENT_TABLE()
 
@@ -148,6 +151,24 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		case 400: // hex button
 		{
 			textBox->AppendText("hex ");
+			break;
+		}
+		case 7:
+		{
+			textBox->AppendText("7");
+
+			break;
+		}
+		case 8:
+		{
+			textBox->AppendText("8");
+
+			break;
+		}
+		case 9:
+		{
+			textBox->AppendText("9");
+
 			break;
 		}
 	}
