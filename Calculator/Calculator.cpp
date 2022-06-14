@@ -4,16 +4,23 @@
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
 // Declare the event button  macroe event button - takes in the first button's windows ID, 
 EVT_BUTTON(200, Calculator::OnButtonClicked) // and link each button eith the ID being clicked to the function we want to call 
+
+// 1st row
 EVT_BUTTON(0, Calculator::OnButtonClicked)
 EVT_BUTTON(1, Calculator::OnButtonClicked)
 EVT_BUTTON(2, Calculator::OnButtonClicked)
 EVT_BUTTON(3, Calculator::OnButtonClicked)
 EVT_BUTTON(1200, Calculator::OnButtonClicked) // Add button
 
+// 2nd row
 EVT_BUTTON(300, Calculator::OnButtonClicked) // dec button
 EVT_BUTTON(4, Calculator::OnButtonClicked)
 EVT_BUTTON(5, Calculator::OnButtonClicked)
 EVT_BUTTON(6, Calculator::OnButtonClicked)
+EVT_BUTTON(1100, Calculator::OnButtonClicked) // substract button
+
+//3rd row
+EVT_BUTTON(400, Calculator::OnButtonClicked) // hex button
 
 wxEND_EVENT_TABLE()
 
@@ -79,49 +86,28 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		case 0:
 		{
 			/*if (textBox->GetValue() == "0")
-			{*/
-			textBox->SetValue(button0->GetLabel());
-			/*}
-			else
 			{
+			//textBox->SetValue(button0->GetLabel());
+			else
+			{*/
 				textBox->AppendText("0");
-			}*/
+			//}
 			break;
 		}
 		case 1:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button1->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("1");
-			}
 			break;
 		}
 		case 2:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button2->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("2");
-			}
 			break;
 		}
 		case 3:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button3->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("3");
-			}
+			
 			break;
 		}
 		case 1200: // Add button
@@ -131,50 +117,37 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		}
 		case 300: // dec button
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(decBtn->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("dec ");
-			}
+			
 			break;
 		}
 		case 4:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button4->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("4");
-			}
+			
 			break;
 		}
 		case 5:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button5->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("5");
-			}
+			
 			break;
 		}
 		case 6:
 		{
-			if (textBox->GetValue() == "0")
-			{
-				textBox->SetValue(button6->GetLabel());
-			}
-			else
-			{
 				textBox->AppendText("6");
-			}
+			
+			break;
+		}
+		case 1100: // substract button
+		{
+
+			textBox->AppendText(" - ");
+			break;
+		}
+		case 400: // hex button
+		{
+			textBox->AppendText("hex ");
 			break;
 		}
 	}
