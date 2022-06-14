@@ -4,6 +4,7 @@
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
 // Declare the event button  macroe event button - takes in the first button's windows ID, 
 EVT_BUTTON(200, Calculator::OnButtonClicked) // and link each button eith the ID being clicked to the function we want to call 
+EVT_BUTTON(0, Calculator::OnButtonClicked)
 
 wxEND_EVENT_TABLE()
 
@@ -61,10 +62,22 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 	// Use a Switch Statement for each button
 	switch (id)
 	{
-	case 200: // clear button
-	{
-		textBox->SetValue("0");
-		break;
-	}
+		case 200: // clear button
+		{
+			textBox->SetValue("0");
+			break;
+		}
+		case 0:
+		{
+			/*if (textBox->GetValue() == "0")
+			{*/
+			textBox->SetValue(button0->GetLabel());
+			/*}
+			else
+			{
+				textBox->AppendText("0");
+			}*/
+			break;
+		}
 	}
 }
