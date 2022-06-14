@@ -34,5 +34,8 @@ private:
 	// 3rd row buttons
 	wxButton* hexBtn = nullptr;
 	wxButton* button7 = nullptr;
+	wxButton* button8 = nullptr;
+
+
 };
 
