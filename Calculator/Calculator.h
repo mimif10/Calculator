@@ -3,5 +3,10 @@
 
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
+public:
+	Calculator();
+
+	~Calculator();
+
 };
 
