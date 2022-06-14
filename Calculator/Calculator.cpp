@@ -34,6 +34,7 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	// 4th row buttons
 	binBtn = new wxButton(this, 500, "bin", wxPoint(30, 50), wxSize(50, 50));
 	negBtn = new wxButton(this, 600, "(-)", wxPoint(80, 50), wxSize(50, 50));
+	modBtn = new wxButton(this, 700, "mod", wxPoint(130, 50), wxSize(50, 50));
 }
 
 Calculator::~Calculator()
