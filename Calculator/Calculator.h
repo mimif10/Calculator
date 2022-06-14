@@ -8,5 +8,9 @@ public:
 
 	~Calculator();
 
+private:
+	// Window Components 
+	// Add a Text Box a the top to the window 
+	wxTextCtrl* textBox = nullptr;
 };
 
