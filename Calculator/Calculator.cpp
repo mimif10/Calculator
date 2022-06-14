@@ -11,6 +11,7 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	button0 = new wxButton(this, 0, "0", wxPoint(30, 200), wxSize(50, 50));
 	button1 = new wxButton(this, 1, "1", wxPoint(80, 200), wxSize(50, 50));
 	button2 = new wxButton(this, 2, "2", wxPoint(130, 200), wxSize(50, 50));
+	button3 = new wxButton(this, 3, "3", wxPoint(180, 200), wxSize(50, 50));
 }
 
 Calculator::~Calculator()
