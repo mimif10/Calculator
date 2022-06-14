@@ -40,5 +40,7 @@ private:
 
 	// 4th row buttons
 	wxButton* binBtn = nullptr;
+	wxButton* negBtn = nullptr;
+
 };
 
