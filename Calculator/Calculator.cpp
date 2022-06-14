@@ -7,12 +7,14 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	textBox = new wxTextCtrl(this, 100, "", wxPoint(30, 26), wxSize(250, 35));
 
 	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
+	// 1st row buttons
 	button0 = new wxButton(this, 0, "0", wxPoint(30, 200), wxSize(50, 50));
+	button1 = new wxButton(this, 1, "1", wxPoint(80, 200), wxSize(50, 50));
+	button2 = new wxButton(this, 2, "2", wxPoint(130, 200), wxSize(50, 50));
 }
 
 Calculator::~Calculator()
 {
-	// 1st row buttons
-	button0 = new wxButton(this, 0, "0", wxPoint(30, 200), wxSize(50, 50));
-	button1 = new wxButton(this, 1, "1", wxPoint(80, 200), wxSize(50, 50));
+	
+	
 }

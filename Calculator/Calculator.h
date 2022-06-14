@@ -17,5 +17,6 @@ private:
 	// 1st row buttons
 	wxButton* button0 = nullptr;
 	wxButton* button1 = nullptr;
+	wxButton* button2 = nullptr;
 };
 
