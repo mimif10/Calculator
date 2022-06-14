@@ -16,5 +16,6 @@ private:
 	// Add buttons to the window 
 	// 1st row buttons
 	wxButton* button0 = nullptr;
+	wxButton* button1 = nullptr;
 };
 
