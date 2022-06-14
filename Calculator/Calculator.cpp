@@ -8,6 +8,8 @@ EVT_BUTTON(0, Calculator::OnButtonClicked)
 EVT_BUTTON(1, Calculator::OnButtonClicked)
 EVT_BUTTON(2, Calculator::OnButtonClicked)
 EVT_BUTTON(3, Calculator::OnButtonClicked)
+EVT_BUTTON(1200, Calculator::OnButtonClicked) // Add button
+
 
 wxEND_EVENT_TABLE()
 
@@ -116,6 +118,11 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 			{
 				textBox->AppendText("3");
 			}
+			break;
+		}
+		case 1200: // Add button
+		{
+			textBox->AppendText(" + ");
 			break;
 		}
 	}
