@@ -24,6 +24,7 @@ EVT_BUTTON(400, Calculator::OnButtonClicked) // hex button
 EVT_BUTTON(7, Calculator::OnButtonClicked)
 EVT_BUTTON(8, Calculator::OnButtonClicked)
 EVT_BUTTON(9, Calculator::OnButtonClicked)
+EVT_BUTTON(1000, Calculator::OnButtonClicked) // multiply
 
 wxEND_EVENT_TABLE()
 
@@ -169,6 +170,11 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		{
 			textBox->AppendText("9");
 
+			break;
+		}
+		case 1000: // multiply button
+		{
+			textBox->AppendText(" * ");
 			break;
 		}
 	}
