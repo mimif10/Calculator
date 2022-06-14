@@ -11,6 +11,8 @@ EVT_BUTTON(3, Calculator::OnButtonClicked)
 EVT_BUTTON(1200, Calculator::OnButtonClicked) // Add button
 
 EVT_BUTTON(300, Calculator::OnButtonClicked) // dec button
+EVT_BUTTON(4, Calculator::OnButtonClicked)
+
 
 wxEND_EVENT_TABLE()
 
@@ -135,6 +137,18 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 			else
 			{
 				textBox->AppendText("dec ");
+			}
+			break;
+		}
+		case 4:
+		{
+			if (textBox->GetValue() == "0")
+			{
+				textBox->SetValue(button4->GetLabel());
+			}
+			else
+			{
+				textBox->AppendText("4");
 			}
 			break;
 		}
