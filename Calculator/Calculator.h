@@ -51,13 +51,10 @@ private:
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
 
-	// All events that are not customed have a type: wxCommand Event (do something event)
-	// wxCommand Event - function that takes wxCommand Event as an argument
-	// button Click event - function that handles the button
+	//wxEventHashTable& GetEventHashTable() const;*/
+
 	void OnButtonClicked(wxCommandEvent& event);
 
-	// wxWidgets provides tools to handle events for us: 
-	// include the macro declare event table below
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
 
