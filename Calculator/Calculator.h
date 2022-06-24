@@ -55,6 +55,8 @@ private:
 
 	void OnButtonClicked(wxCommandEvent& event);
 
+	// wxWidgets provides tools to handle events for us: 
+  // include the macro declare event table below
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
 
