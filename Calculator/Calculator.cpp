@@ -37,79 +37,47 @@ EVT_BUTTON(900, Calculator::OnButtonClicked) // divide
 wxEND_EVENT_TABLE()
 
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
+
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
 {
-	
+	// instance of ButtonFactory
+	ButtonFactory factory = ButtonFactory(this);
 
 	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
-
-	//clearBtn = factory.CreateClearBtn(this);
-
-	//// 1st row buttons
-	//button0 = factory.CreateButton0(this);
-	//button1 = factory.CreateButton1(this);
-	//button2 = factory.CreateButton2(this);
-	//button3 = factory.CreateButton3(this);
-	//addBtn = factory.CreateAddButton(this);
-
-	//// 2nd row buttons
-	//decBtn = factory.CreateDecButton(this);
-	//button4 = factory.CreateButton4(this);
-	//button5 = factory.CreateButton5(this);
-	//button6 = factory.CreateButton6(this);
-	//substractBtn = factory.CreateSubstractButton(this);
-
-	//// 3rd row buttons
-	//hexBtn = factory.CreateHexButton(this);
-	//button7 = factory.CreateButton7(this);
-	//button8 = factory.CreateButton8(this);
-	//button9 = factory.CreateButton9(this);
-	//mutliplyBtn = factory.CreateMutliplyBtn(this);
-
-	//// 4th row buttons
-	//binBtn = factory.CreateBinButton(this);
-	//negBtn = factory.CreateNegButton(this);
-	//modBtn = factory.CreateModButton(this);
-	//equalBtn = factory.CreateEqualButton(this);
-	//divideBtn = factory.CreateDivideBtn(this);
+	
+	// Text Box
+	textBox = factory.CreatetextBox();
 
 	// 1st row buttons
-	//ButtonFactory factory;
-
-	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
-	textBox = new wxTextCtrl(this, 100, "", wxPoint(30, 26), wxSize(250, 35));
-	// 4th row buttons
-
-	binBtn = new wxButton(this, 500, "bin", wxPoint(30, 50), wxSize(50, 50));
-	negBtn = new wxButton(this, 600, "(-)", wxPoint(80, 50), wxSize(50, 50));
-	modBtn = new wxButton(this, 700, "mod", wxPoint(130, 50), wxSize(50, 50));
-	equalBtn = new wxButton(this, 800, "=", wxPoint(180, 50), wxSize(50, 50));
-	divideBtn = new wxButton(this, 900, "/", wxPoint(230, 50), wxSize(50, 50));
-
-	// 3rd row buttons
-	hexBtn = new wxButton(this, 400, "hex", wxPoint(30, 100), wxSize(50, 50));
-	button7 = new wxButton(this, 7, "7", wxPoint(80, 100), wxSize(50, 50));
-	button8 = new wxButton(this, 8, "8", wxPoint(130, 100), wxSize(50, 50));
-	button9 = new wxButton(this, 9, "9", wxPoint(180, 100), wxSize(50, 50));
-	mutliplyBtn = new wxButton(this, 1000, "*", wxPoint(230, 100), wxSize(50, 50));
-
+	button0 = factory.CreateButton0();
+	button1 = factory.CreateButton1();
+	button2 = factory.CreateButton2();
+	button3 = factory.CreateButton3();
+	addBtn = factory.CreateAddButton();
 
 	// 2nd row buttons
-	decBtn = new wxButton(this, 300, "dec", wxPoint(30, 150), wxSize(50, 50));
-	button4 = new wxButton(this, 4, "4", wxPoint(80, 150), wxSize(50, 50));
-	button5 = new wxButton(this, 5, "5", wxPoint(130, 150), wxSize(50, 50));
-	button6 = new wxButton(this, 6, "6", wxPoint(180, 150), wxSize(50, 50));
-	substractBtn = new wxButton(this, 1100, "-", wxPoint(230, 150), wxSize(50, 50));
+	decBtn = factory.CreateDecButton();
+	button4 = factory.CreateButton4();
+	button5 = factory.CreateButton5();
+	button6 = factory.CreateButton6();
+	substractBtn = factory.CreateSubstractButton();
 
-	// 1st row buttons
-	button0 = new wxButton(this, 0, "0", wxPoint(30, 200), wxSize(50, 50));
-	button1 = new wxButton(this, 1, "1", wxPoint(80, 200), wxSize(50, 50));
-	button2 = new wxButton(this, 2, "2", wxPoint(130, 200), wxSize(50, 50));
-	button3 = new wxButton(this, 3, "3", wxPoint(180, 200), wxSize(50, 50));
-	addBtn = new wxButton(this, 1200, "+", wxPoint(230, 200), wxSize(50, 50));
+	// 3rd row buttons
+	hexBtn = factory.CreateHexButton();
+	button7 = factory.CreateButton7();
+	button8 = factory.CreateButton8();
+	button9 = factory.CreateButton9();
+	mutliplyBtn = factory.CreateMutliplyBtn();
 
-	// 5th row buttons
-	clearBtn = new wxButton(this, 200, "clear", wxPoint(30, 250), wxSize(250, 30));
+	// 4th row buttons
+	binBtn = factory.CreateBinButton();
+	negBtn = factory.CreateNegButton();
+	modBtn = factory.CreateModButton();
+	equalBtn = factory.CreateEqualButton();
+	divideBtn = factory.CreateDivideBtn();
+
+	// clear button
+	clearBtn = factory.CreateClearBtn();
 }
 
 Calculator::~Calculator()
@@ -331,5 +299,4 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 
 	}
 }
-
 

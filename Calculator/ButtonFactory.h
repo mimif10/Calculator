@@ -1,58 +1,49 @@
 #pragma once
 #include "Calculator.h"
+#include "wx/wx.h"
 
-//class Calculator;
-
-class ButtonFactory : wxFrame
+class ButtonFactory 
 {
+private:
+	Calculator* calculator;
+
 public:
+	ButtonFactory(Calculator* _calc);
+	~ButtonFactory();
 
-	//Calculator* calculator;
+	// Text Box
+	wxTextCtrl* CreatetextBox();
 
-	//Calculator* GetCalculator();
+	// 1st row
+	wxButton* CreateButton0();// Will create a button
+	wxButton* CreateButton1();
+	wxButton* CreateButton2();
+	wxButton* CreateButton3();
+	wxButton* CreateAddButton();
 
-	//wxTextCtrl* CreatetextBox(Calculator* calc);
+	// 2nd row
+	wxButton* CreateDecButton();
+	wxButton* CreateButton4();
+	wxButton* CreateButton5();
+	wxButton* CreateButton6();
+	wxButton* CreateSubstractButton();
 
-	////// 1st row
-	//////Calculator* CreateButton1(Calculator* calc);
+	//3rd row
+	wxButton* CreateHexButton();
+	wxButton* CreateButton7();
+	wxButton* CreateButton8();
+	wxButton* CreateButton9();
+	wxButton* CreateMutliplyBtn();
 
-	//wxButton* CreateButton0(Calculator* calc);// Will create a button
+	// 4th row buttons
+	wxButton* CreateBinButton();
+	wxButton* CreateNegButton();
+	wxButton* CreateModButton();
+	wxButton* CreateEqualButton();
+	wxButton* CreateDivideBtn();
 
-	//wxButton* CreateButton1(Calculator* calc);
-	//wxButton* CreateButton2(Calculator* calc);
-	//wxButton* CreateButton3(Calculator* calc);
-	//wxButton* CreateAddButton(Calculator* calc);
-
-	//// 2nd row
-	//wxButton* CreateDecButton(Calculator* calc);
-	//wxButton* CreateButton4(Calculator* calc);
-	//wxButton* CreateButton5(Calculator* calc);
-	//wxButton* CreateButton6(Calculator* calc);
-	//wxButton* CreateSubstractButton(Calculator* calc);
-
-	////3rd row
-	//wxButton* CreateHexButton(Calculator* calc);
-	//wxButton* CreateButton7(Calculator* calc);
-	//wxButton* CreateButton8(Calculator* calc);
-	//wxButton* CreateButton9(Calculator* calc);
-	//wxButton* CreateMutliplyBtn(Calculator* calc);
-
-	//// 4th row buttons
-	//wxButton* CreateBinButton(Calculator* calc);
-	//wxButton* CreateNegButton(Calculator* calc);
-	//wxButton* CreateModButton(Calculator* calc);
-	//wxButton* CreateEqualButton(Calculator* calc);
-	//wxButton* CreateDivideBtn(Calculator* calc);
-
-	//wxTextCtrl* CreateClearBtn(Calculator* calc);
-
-	//	// wxWidgets provides tools to handle events for us: 
-	//// include the macro declare event table below
-	//wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
-	///*const wxEventTable* GetEventTable() const;
-
-	//wxEventHashTable& GetEventHashTable() const;*/
-
+	// Clear button
+	wxButton* CreateClearBtn();
 
 };
 
