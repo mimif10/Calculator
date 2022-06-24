@@ -10,15 +10,11 @@ public:
 
 	Calculator* calculator;
 
-	//Calculator* GetCalculator();
-
+	// Text Box
 	wxTextCtrl* CreatetextBox(Calculator* calc);
 
-	//// 1st row
-	////Calculator* CreateButton1(Calculator* calc);
-
+	// 1st row
 	wxButton* CreateButton0(Calculator* calc);// Will create a button
-
 	wxButton* CreateButton1(Calculator* calc);
 	wxButton* CreateButton2(Calculator* calc);
 	wxButton* CreateButton3(Calculator* calc);
@@ -45,6 +41,7 @@ public:
 	wxButton* CreateEqualButton(Calculator* calc);
 	wxButton* CreateDivideBtn(Calculator* calc);
 
+	// Clear Button
 	wxTextCtrl* CreateClearBtn(Calculator* calc);
 
 	
