@@ -1,7 +1,6 @@
 #pragma once
 #include "wx/wx.h"
 
-class ButtonFactory;
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
 public:
@@ -10,8 +9,6 @@ public:
 	~Calculator();
 
 private:
-
-	ButtonFactory* factory;
 
 	// Window Components 
 	// Add a Text Box a the top to the window 

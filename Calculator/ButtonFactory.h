@@ -2,47 +2,50 @@
 #include "Calculator.h"
 #include "wx/wx.h"
 
-class Calculator;
-
-class ButtonFactory : wxFrame
+class ButtonFactory 
 {
-public:
+private:
 
 	Calculator* calculator;
 
+public:
+	ButtonFactory(Calculator* _calc);
+
+	~ButtonFactory();
+
 	// Text Box
-	wxTextCtrl* CreatetextBox(Calculator* calc);
+	wxTextCtrl* CreatetextBox(); 
 
 	// 1st row
-	wxButton* CreateButton0(Calculator* calc);// Will create a button
-	wxButton* CreateButton1(Calculator* calc);
-	wxButton* CreateButton2(Calculator* calc);
-	wxButton* CreateButton3(Calculator* calc);
-	wxButton* CreateAddButton(Calculator* calc);
+	wxButton* CreateButton0();// Will create a button
+	wxButton* CreateButton1();
+	wxButton* CreateButton2();
+	wxButton* CreateButton3();
+	wxButton* CreateAddButton();
 
 	// 2nd row
-	wxButton* CreateDecButton(Calculator* calc);
-	wxButton* CreateButton4(Calculator* calc);
-	wxButton* CreateButton5(Calculator* calc);
-	wxButton* CreateButton6(Calculator* calc);
-	wxButton* CreateSubstractButton(Calculator* calc);
+	wxButton* CreateDecButton();
+	wxButton* CreateButton4();
+	wxButton* CreateButton5();
+	wxButton* CreateButton6();
+	wxButton* CreateSubstractButton();
 
 	//3rd row
-	wxButton* CreateHexButton(Calculator* calc);
-	wxButton* CreateButton7(Calculator* calc);
-	wxButton* CreateButton8(Calculator* calc);
-	wxButton* CreateButton9(Calculator* calc);
-	wxButton* CreateMutliplyBtn(Calculator* calc);
+	wxButton* CreateHexButton();
+	wxButton* CreateButton7();
+	wxButton* CreateButton8();
+	wxButton* CreateButton9();
+	wxButton* CreateMutliplyBtn();
 
 	// 4th row buttons
-	wxButton* CreateBinButton(Calculator* calc);
-	wxButton* CreateNegButton(Calculator* calc);
-	wxButton* CreateModButton(Calculator* calc);
-	wxButton* CreateEqualButton(Calculator* calc);
-	wxButton* CreateDivideBtn(Calculator* calc);
+	wxButton* CreateBinButton();
+	wxButton* CreateNegButton();
+	wxButton* CreateModButton();
+	wxButton* CreateEqualButton();
+	wxButton* CreateDivideBtn();
 
 	// Clear Button
-	wxTextCtrl* CreateClearBtn(Calculator* calc);
+	wxButton* CreateClearBtn();
 
 	
 	
