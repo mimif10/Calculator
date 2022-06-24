@@ -1,4 +1,4 @@
-#pragma once
+#pragma oncedd
 class CalculatorProcessor
 {
 private:
