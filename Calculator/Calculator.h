@@ -1,6 +1,7 @@
 #pragma once
 #include "wx/wx.h"
 
+class ButtonFactory;
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
 public:
@@ -9,6 +10,8 @@ public:
 	~Calculator();
 
 private:
+
+	ButtonFactory* factory;
 
 	// Window Components 
 	// Add a Text Box a the top to the window 
@@ -49,8 +52,6 @@ private:
 
 	void OnButtonClicked(wxCommandEvent& event);
 
-	// wxWidgets provides tools to handle events for us: 
-  // include the macro declare event table below
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
 
