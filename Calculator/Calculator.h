@@ -8,14 +8,14 @@ public:
 	Calculator();
 
 	~Calculator();
-
+	wxTextCtrl* textBox = nullptr;
 private:
 
 	ButtonFactory* factory;
 
 	// Window Components 
 	// Add a Text Box a the top to the window 
-	wxTextCtrl* textBox = nullptr;
+	
 
 	// Add buttons to the window 
 

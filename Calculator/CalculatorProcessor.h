@@ -36,7 +36,7 @@ public:
 
 	 std::string EqualsOperand(Calculator* calc);
 
-	 int CurrOperation(Calculator* calc);
+	  int CurrOperation(Calculator* calc);
 
 	 void GetCalcOperand(Calculator* calc);
 	 

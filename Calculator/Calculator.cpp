@@ -1,6 +1,6 @@
 #include "Calculator.h"
 #include "ButtonFactory.h"
-
+#include "CalculatorProcessor.h"
 // implement Event Table (begin and end)
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
 // Declare the event button  macroe event button - takes in the first button's windows ID, 
@@ -37,6 +37,7 @@ EVT_BUTTON(900, Calculator::OnButtonClicked) // divide
 wxEND_EVENT_TABLE()
 
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
+
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
 {  
 	// instance of ButtonFactory;
@@ -46,6 +47,8 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	textBox = factory.CreatetextBox();
 
 	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
+
+	//clearBtn = factory.CreateClearBtn(this);
 
 	// 1st row buttons
 	button0 = factory.CreateButton0();
@@ -96,6 +99,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 	case 200: // clear button
 	{
 		textBox->SetValue("0");
+		
 		break;
 	}
 	case 0:
@@ -149,7 +153,6 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 	case 1200: // Add button
 	{
 		textBox->AppendText(" + ");
-		Operators.push_back(id);
 		break;
 	}
 	case 300: // dec button
@@ -299,6 +302,5 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 
 	}
 }
-
 
 

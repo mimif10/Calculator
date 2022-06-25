@@ -9,7 +9,7 @@ class ButtonFactory
 public:
 	Calculator* calculator;
 
-	ButtonFactory(Calculator* _cMain); // pass in calculator
+	ButtonFactory(Calculator* calculator); // pass in calculator
 	~ButtonFactory();
 
 	wxTextCtrl* CreatetextBox();
