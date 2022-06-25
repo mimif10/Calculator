@@ -1,5 +1,7 @@
 #pragma once
 #include "wx/wx.h"
+#include <vector>
+#include "CalculatorProcessor.h"
 
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
@@ -8,11 +10,18 @@ public:
 
 	~Calculator();
 
+	wxTextCtrl* textBox = nullptr;
+
 private:
+	std::vector<float> calcValues;
+	std::vector<int> Operators;
+
+	// Processor pointer
+	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 
 	// Window Components 
 	// Add a Text Box a the top to the window 
-	wxTextCtrl* textBox = nullptr;
+	
 
 	// Add buttons to the window 
 

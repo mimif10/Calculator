@@ -1,27 +1,47 @@
-#pragma oncedd
+#pragma once
+#include <vector>
+#include <string>
+#include "ButtonFactory.h"
+
+class Calculator;
 class CalculatorProcessor
 {
 private:
-
 	CalculatorProcessor() {};
 	~CalculatorProcessor();
 
 	static CalculatorProcessor* _processor;
 
+	double leftOperand = 0;
+	double rightOperand = 0;
+	std::string calcEquation = "";
+	std::string setEquation = "";
+	std::string setOperand = "";
 public:
-	static CalculatorProcessor* GetInstance()
-	{
-		if (_processor == nullptr) // double check to see if it is a nullptr (at the beginning)
-		{
-			_processor = new CalculatorProcessor(); // then create a new Processor 
-		}
-		return _processor;
-	}
+	static CalculatorProcessor* GetInstance();
 
 	// copy constructor
 	CalculatorProcessor(CalculatorProcessor& other) = delete; // so that you won't able to call it / no instance
 
 	// assignment operator
-	void operator=(const CalculatorProcessor& other) = delete;
+	 void operator=(const CalculatorProcessor& other) = delete;
+
+	 void Addition();
+
+	 void Substraction();
+
+	 void Multiply();
+
+	 void Divide();
+
+	 std::string EqualsOperand(Calculator* calc);
+
+	 int CurrOperation(Calculator* calc);
+
+	 void GetCalcOperand(Calculator* calc);
+	 
+	 void ModOperation();
+
+	
 };
 

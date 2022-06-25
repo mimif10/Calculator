@@ -146,9 +146,10 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		}
 		break;
 	}
-	case 1200: // plus button
+	case 1200: // Add button
 	{
 		textBox->AppendText(" + ");
+		Operators.push_back(id);
 		break;
 	}
 	case 300: // dec button
@@ -298,5 +299,6 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 
 	}
 }
+
 
 
