@@ -39,14 +39,16 @@ wxEND_EVENT_TABLE()
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
 
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
-{
-	// instance of ButtonFactory
+{  
+	// instance of ButtonFactory;
 	ButtonFactory factory = ButtonFactory(this);
 
-	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
-	
-	// Text Box
+	// create a textbox at the top of the window (parameters: parent (wxFrame), ID, title, starting point, starting size
 	textBox = factory.CreatetextBox();
+
+	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
+
+	//clearBtn = factory.CreateClearBtn(this);
 
 	// 1st row buttons
 	button0 = factory.CreateButton0();
@@ -147,7 +149,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		}
 		break;
 	}
-	case 1200: // plus button
+	case 1200: // Add button
 	{
 		textBox->AppendText(" + ");
 		break;
@@ -299,4 +301,5 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 
 	}
 }
+
 

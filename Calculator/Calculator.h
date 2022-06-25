@@ -46,7 +46,6 @@ private:
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
 
-	//wxEventHashTable& GetEventHashTable() const;*/
 
 	void OnButtonClicked(wxCommandEvent& event);
 
