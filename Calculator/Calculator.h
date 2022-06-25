@@ -1,8 +1,7 @@
 #pragma once
 #include "wx/wx.h"
-#include <vector>
-#include "CalculatorProcessor.h"
 
+class ButtonFactory;
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
 public:
@@ -10,21 +9,17 @@ public:
 
 	~Calculator();
 
-	wxTextCtrl* textBox = nullptr;
-
 private:
-	std::vector<float> calcValues;
-	std::vector<int> Operators;
 
-	// Processor pointer
-	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
+	ButtonFactory* factory;
 
 	// Window Components 
 	// Add a Text Box a the top to the window 
-	
+	wxTextCtrl* textBox = nullptr;
 
 	// Add buttons to the window 
 
+	wxButton* clearBtn = nullptr;
 
 	// 1st row buttons
 	wxButton* button0 = nullptr;
@@ -54,13 +49,9 @@ private:
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
 
-	// clear button
-	wxButton* clearBtn = nullptr;
 
 	void OnButtonClicked(wxCommandEvent& event);
 
-	// wxWidgets provides tools to handle events for us: 
-  // include the macro declare event table below
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
 
