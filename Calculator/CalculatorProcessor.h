@@ -3,7 +3,6 @@
 #include <string>
 #include "ButtonFactory.h"
 
-class Calculator;
 class CalculatorProcessor
 {
 private:
