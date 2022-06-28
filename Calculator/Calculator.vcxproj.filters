@@ -27,6 +27,9 @@
     <ClInclude Include="CalculatorProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="iBaseCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calculator.cpp">
@@ -38,7 +41,7 @@
     <ClCompile Include="ButtonFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CalculatorProcessor.cpp">
+    <ClCompile Include="iBaseCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

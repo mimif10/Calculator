@@ -116,38 +116,22 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->AppendText("8");
 		toCalculate.append("8");
 		break;
-
-	case nine:
-		textBox->AppendText("9");
-		toCalculate.append("9");
+	}
+	case 9:
+	{
+		if (textBox->GetValue() == "0")
+		{
+			textBox->SetValue(button9->GetLabel());
+		}
+		else
+		{
+			textBox->AppendText("9");
+		}
 		break;
-
-	case bin:										//binary
-		_processor->setBaseNumber(answer);
-		convertedNumber = _processor->getBinary();
-		textBox->AppendText(convertedNumber);
-		break;
-
-	case hex:										//hexadecimal
-		_processor->setBaseNumber(answer);
-		convertedNumber = _processor->getHexadecimal();
-		textBox->AppendText(convertedNumber);
-		break;
-
-	case dec:										//decimal
-		_processor->setBaseNumber(answer);
-		convertedNumber = _processor->getDecimal();
-		textBox->AppendText(convertedNumber);
-		break;
-
-	case neg:										//negate
-		textBox->AppendText("-");
-		toCalculate.append("--");//double minus to show that an item is negative in calc
-		break;
-
-	case divide:
-		textBox->AppendText("/");
-		toCalculate.append("/");
+	}
+	case 1000: // multiply button
+	{
+		textBox->AppendText(" * ");
 		break;
 
 	case multiply:

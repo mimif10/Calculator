@@ -2,6 +2,8 @@
 #include "Calculator.h"
 //#include "CalculatorProcessor.h"
 #include "wx/wx.h"
+#include "IBaseCommand.h"
+
 
 class Calculator;
 class ButtonFactory
