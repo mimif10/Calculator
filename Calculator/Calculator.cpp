@@ -116,9 +116,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->AppendText("8");
 		toCalculate.append("8");
 		break;
-	}
 	case 9:
-	{
 		if (textBox->GetValue() == "0")
 		{
 			textBox->SetValue(button9->GetLabel());
@@ -127,11 +125,6 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		{
 			textBox->AppendText("9");
 		}
-		break;
-	}
-	case 1000: // multiply button
-	{
-		textBox->AppendText(" * ");
 		break;
 
 	case multiply:
@@ -155,7 +148,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->Clear();
 		toCalculate.append("="); // shows equation on screen
 
-		answer = _processor->doMath(toCalculate); // calculation
+		answer = _processor->MathCalc(toCalculate); // calculation
 		result == (int)answer;
 		temp = std::to_string(answer);// convert answer (double) to a string
 		toCalculate.append(temp); // add the calculated string to temp (string)

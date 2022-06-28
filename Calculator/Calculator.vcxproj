@@ -157,7 +157,6 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ButtonFactory.cpp" />
     <ClCompile Include="Calculator.cpp" />
-    <ClCompile Include="CalculatorProcessor.cpp" />
     <ClCompile Include="iBaseCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
