@@ -1,14 +1,12 @@
-#include "Calculator.h"
 #include "ButtonFactory.h"
 
-
-ButtonFactory::ButtonFactory(Calculator* _cMain)
+ButtonFactory::ButtonFactory(Calculator* _main)
 {
-	calculator = _cMain;
+	calculator = _main;
 }
-
 ButtonFactory::~ButtonFactory()
 {
+
 }
 
 wxTextCtrl* ButtonFactory::CreatetextBox()
@@ -17,13 +15,12 @@ wxTextCtrl* ButtonFactory::CreatetextBox()
 	return textbox;
 }
 
-
-// 1st row buttons
 wxButton* ButtonFactory::CreateButton0()
 {
 	wxButton* button0 = new wxButton(calculator, 0, "0", wxPoint(30, 200), wxSize(50, 50));
 	return button0;
 }
+
 
 wxButton* ButtonFactory::CreateButton1()
 {
@@ -43,24 +40,11 @@ wxButton* ButtonFactory::CreateButton3()
 	return button3;
 }
 
-wxButton* ButtonFactory::CreateAddButton()
-{
-	wxButton* addBtn = new wxButton(calculator, 1200, "+", wxPoint(230, 200), wxSize(50, 50));
-
-	return addBtn;
-}
-
-// 2nd row buttons
-wxButton* ButtonFactory::CreateDecButton()
-{
-	wxButton* decBtn = new wxButton(calculator, 300, "dec", wxPoint(30, 150), wxSize(50, 50));
-	return decBtn;
-}
-
 wxButton* ButtonFactory::CreateButton4()
 {
 	wxButton* button4 = new wxButton(calculator, 4, "4", wxPoint(80, 150), wxSize(50, 50));
 	return button4;
+
 }
 
 wxButton* ButtonFactory::CreateButton5()
@@ -73,19 +57,6 @@ wxButton* ButtonFactory::CreateButton6()
 {
 	wxButton* button6 = new wxButton(calculator, 6, "6", wxPoint(180, 150), wxSize(50, 50));
 	return button6;
-}
-
-wxButton* ButtonFactory::CreateSubstractButton()
-{
-	wxButton* substractBtn = new wxButton(calculator, 1100, "-", wxPoint(230, 150), wxSize(50, 50));
-	return substractBtn;
-}
-
-// 3rd row buttons
-wxButton* ButtonFactory::CreateHexButton()
-{
-	wxButton* hexBtn = new wxButton(calculator, 400, "hex", wxPoint(30, 100), wxSize(50, 50));
-	return hexBtn;
 }
 
 wxButton* ButtonFactory::CreateButton7()
@@ -106,45 +77,71 @@ wxButton* ButtonFactory::CreateButton9()
 	return button9;
 }
 
-wxButton* ButtonFactory::CreateMutliplyBtn()
-{
-	wxButton* mutliplyBtn = new wxButton(calculator, 1000, "*", wxPoint(230, 100), wxSize(50, 50));
-	return mutliplyBtn;
-}
-
-// 4th row buttons
 wxButton* ButtonFactory::CreateBinButton()
 {
-	wxButton* binBtn = new wxButton(calculator, 500, "bin", wxPoint(30, 50), wxSize(50, 50));
+	wxButton* binBtn = new wxButton(calculator, 10, "bin", wxPoint(30, 50), wxSize(50, 50));
 	return binBtn;
 }
 
-wxButton* ButtonFactory::CreateNegButton()
+wxButton* ButtonFactory::CreateHexButton()
 {
-	wxButton* negBtn = new wxButton(calculator, 600, "(-)", wxPoint(80, 50), wxSize(50, 50));
-	return negBtn;
+	wxButton* hexBtn = new wxButton(calculator, 11, "hex", wxPoint(30, 100), wxSize(50, 50));
+	return hexBtn;
 }
 
-wxButton* ButtonFactory::CreateModButton()
+wxButton* ButtonFactory::CreateDecButton()
 {
-	wxButton* modBtn = new wxButton(calculator, 700, "mod", wxPoint(130, 50), wxSize(50, 50));
-	return modBtn;
+	wxButton* decBtn = new wxButton(calculator, 12, "dec", wxPoint(30, 150), wxSize(50, 50));
+	return decBtn;
+}
+
+
+wxButton* ButtonFactory::CreateDivideBtn()
+{
+	wxButton* divideBtn = new wxButton(calculator, 13, "/", wxPoint(230, 50), wxSize(50, 50));
+	return divideBtn;
+
+}
+
+wxButton* ButtonFactory::CreateMutliplyBtn()
+{
+	wxButton* mutliplyBtn = new wxButton(calculator, 14, "*", wxPoint(230, 100), wxSize(50, 50));
+	return mutliplyBtn;
+}
+
+
+wxButton* ButtonFactory::CreateSubstractButton()
+{
+	wxButton* substractBtn = new wxButton(calculator, 15, "-", wxPoint(230, 150), wxSize(50, 50));
+	return substractBtn;
+}
+
+wxButton* ButtonFactory::CreateAddButton()
+{
+	wxButton* addBtn = new wxButton(calculator, 16, "+", wxPoint(230, 200), wxSize(50, 50));
+	return addBtn;
 }
 
 wxButton* ButtonFactory::CreateEqualButton()
 {
-	wxButton* equalBtn = new wxButton(calculator, 800, "=", wxPoint(180, 50), wxSize(50, 50));
+	wxButton* equalBtn = new wxButton(calculator, 17, "=", wxPoint(180, 50), wxSize(50, 50));
 	return equalBtn;
 }
 
-wxButton* ButtonFactory::CreateDivideBtn()
+wxButton* ButtonFactory::CreateModButton()
 {
-	wxButton* divideBtn = new wxButton(calculator, 900, "/", wxPoint(230, 50), wxSize(50, 50));
-	return divideBtn;
+	wxButton* modBtn = new wxButton(calculator, 18, "mod", wxPoint(130, 50), wxSize(50, 50));
+	return modBtn;
+}
+
+wxButton* ButtonFactory::CreateNegButton()
+{
+	wxButton* negBtn = new wxButton(calculator, 19, "(-)", wxPoint(80, 50), wxSize(50, 50));
+	return negBtn;
 }
 
 wxButton* ButtonFactory::CreateClearBtn()
 {
-	wxButton* clearBtn = new wxButton(calculator, 200, "clear", wxPoint(30, 250), wxSize(250, 30));
+	wxButton* clearBtn = new wxButton(calculator, 20, "clear", wxPoint(30, 250), wxSize(250, 30));
 	return clearBtn;
 }

@@ -1,24 +1,26 @@
 #pragma once
 #include "wx/wx.h"
 
+class CalculatorProcessor;
 class ButtonFactory;
 class Calculator : public wxFrame //inherit wxFrame form (a wimdow in wxWidget) so the window/frame to show
 {
 public:
 	Calculator();
-
 	~Calculator();
-	wxTextCtrl* textBox = nullptr;
-private:
 
+	// Add a Text Box a the top to the window 
+	wxTextCtrl* textBox = nullptr;
+
+private:
+	CalculatorProcessor* _processor;
 	ButtonFactory* factory;
 
-	// Window Components 
-	// Add a Text Box a the top to the window 
+	double result;
+	double answer;
+	std::string toCalculate;
 	
-
 	// Add buttons to the window 
-
 	wxButton* clearBtn = nullptr;
 
 	// 1st row buttons
@@ -48,7 +50,6 @@ private:
 	wxButton* modBtn = nullptr;
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
-
 
 	void OnButtonClicked(wxCommandEvent& event);
 
