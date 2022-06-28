@@ -1,20 +1,22 @@
 #pragma once
 #include "Calculator.h"
+//#include "CalculatorProcessor.h"
 #include "wx/wx.h"
+
+//class Calculator;
 
 class ButtonFactory 
 {
 private:
 	Calculator* calculator;
 
-public:
-	ButtonFactory(Calculator* calculator);
+	ButtonFactory(Calculator* _cMain); // pass in calculator
 	~ButtonFactory();
 
 	wxTextCtrl* CreatetextBox();
 
-	wxButton* CreateButton0();
-
+	// 1st row
+	wxButton* CreateButton0();// Will create a button
 	wxButton* CreateButton1();
 
 	wxButton* CreateButton2();
@@ -23,6 +25,7 @@ public:
 
 	wxButton* CreateAddButton();
 
+	// 2nd row
 	wxButton* CreateDecButton();
 
 	wxButton* CreateButton4();
@@ -33,6 +36,7 @@ public:
 
 	wxButton* CreateSubstractButton();
 
+	//3rd row
 	wxButton* CreateHexButton();
 
 	wxButton* CreateButton7();
@@ -43,6 +47,7 @@ public:
 
 	wxButton* CreateMutliplyBtn();
 
+	// 4th row buttons
 	wxButton* CreateBinButton();
 
 	wxButton* CreateNegButton();
@@ -52,8 +57,8 @@ public:
 	wxButton* CreateEqualButton();
 
 	wxButton* CreateDivideBtn();
-
 	wxButton* CreateClearBtn();
+
 
 
 
