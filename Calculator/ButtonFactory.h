@@ -1,6 +1,8 @@
 #pragma once
 #include "Calculator.h"
 #include "wx/wx.h"
+#include "IBaseCommand.h"
+
 
 class ButtonFactory 
 {

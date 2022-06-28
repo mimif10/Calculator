@@ -1,5 +1,7 @@
 #include "Calculator.h"
 #include "ButtonFactory.h"
+#include "CalculatorProcessor.h"
+#include "IBaseCommand.h"
 
 // implement Event Table (begin and end)
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
@@ -248,22 +250,38 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 			textBox->AppendText("8");
 		}
 		break;
-	}
-	case 9:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button9->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("9");
-		}
+
+	case nine:
+		textBox->AppendText("9");
+		toCalculate.append("9");
 		break;
-	}
-	case 1000: // multiply button
-	{
-		textBox->AppendText(" * ");
+
+	case bin:										//binary
+		_processor->setBaseNumber(answer);
+		convertedNumber = _processor->getBinary();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case hex:										//hexadecimal
+		_processor->setBaseNumber(answer);
+		convertedNumber = _processor->getHexadecimal();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case dec:										//decimal
+		_processor->setBaseNumber(answer);
+		convertedNumber = _processor->getDecimal();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case neg:										//negate
+		textBox->AppendText("-");
+		toCalculate.append("--");//double minus to show that an item is negative in calc
+		break;
+
+	case divide:
+		textBox->AppendText("/");
+		toCalculate.append("/");
 		break;
 	}
 	case 500: // bin button
@@ -281,11 +299,44 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 	case 600: // neg button
 	{
 		textBox->AppendText("-");
+		toCalculate.append("-");
 		break;
-	}
-	case 700: // mod button
-	{
-		textBox->AppendText(" mod ");
+
+	case add:
+		textBox->AppendText("+");
+		toCalculate.append("+");
+		break;
+
+	case equal:
+
+		//textBox->AppendText("=");
+		textBox->Clear();
+		toCalculate.append("="); // shows equation on screen
+
+		answer = _processor->doMath(toCalculate); // calculation
+		result == (int)answer;
+		temp = std::to_string(answer);// convert answer (double) to a string
+		toCalculate.append(temp); // add the calculated string to temp (string)
+		textBox->AppendText(toCalculate); // shows answer on the same screen
+		toCalculate = "";
+		answer = answer;
+		/*double prevAnswer;
+		prevAnswer = answer;*/
+		answer = 0;
+
+		//next = textBox->SetValue("0");
+		//answer = processor->Execute(toCalculate); //decided to just run the excecute function since the other thing doesn't work and doesn't make a lot of sense
+
+		//if (answer == 1.5)//if doMath doesn't find the right operand, it sends this decimal
+		//{
+		//	textBox->AppendText("Something didn't work. You probably didn't put in an operator");
+		//	break;
+		//}
+
+
+	case mod:
+		textBox->AppendText("%");
+		toCalculate.append("%");
 		break;
 	}
 	case 800: // equal button
