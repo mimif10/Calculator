@@ -11,14 +11,15 @@ public:
 
 	// Add a Text Box a the top to the window 
 	wxTextCtrl* textBox = nullptr;
-
-private:
 	CalculatorProcessor* _processor;
 	ButtonFactory* factory;
 
-	// Window Components 
-	// Add a Text Box a the top to the window 
-	wxTextCtrl* textBox = nullptr;
+private:
+	
+
+	double result;
+	double answer;
+	std::string toCalculate;
 
 	// Add buttons to the window 
 	wxButton* clearBtn = nullptr;
@@ -55,4 +56,3 @@ private:
 
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
-

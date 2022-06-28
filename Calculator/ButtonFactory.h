@@ -3,13 +3,13 @@
 //#include "CalculatorProcessor.h"
 #include "wx/wx.h"
 
-//class Calculator;
-
-class ButtonFactory 
+class Calculator;
+class ButtonFactory
 {
 private:
 	Calculator* calculator;
 
+public:
 	ButtonFactory(Calculator* _cMain); // pass in calculator
 	~ButtonFactory();
 

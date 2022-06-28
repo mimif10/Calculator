@@ -16,7 +16,7 @@ enum IDS // changed to enums to make processor easier
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
 
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
-{  
+{
 	// instance of ButtonFactory;
 	ButtonFactory factory = ButtonFactory(this);
 
@@ -26,8 +26,6 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 	textBox = factory.CreatetextBox();
 
 	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
-
-	//clearBtn = factory.CreateClearBtn(this);
 
 	// 1st row buttons
 	button0 = factory.CreateButton0();
@@ -93,34 +91,10 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->AppendText("3");
 		toCalculate.append("3");
 		break;
-	}
-	case 1200: // Add button
-	{
-		textBox->AppendText(" + ");
-		break;
-	}
-	case 300: // dec button
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(decBtn->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("dec ");
-		}
-		break;
-	}
-	case 4:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button4->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("4");
-		}
+
+	case four:
+		textBox->AppendText("4");
+		toCalculate.append("4");
 		break;
 
 	case five:
@@ -150,7 +124,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 
 	case bin:										//binary
 		_processor->setBaseNumber(answer);
-		convertedNumber = _processor->getBianary();
+		convertedNumber = _processor->getBinary();
 		textBox->AppendText(convertedNumber);
 		break;
 
@@ -166,16 +140,16 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->AppendText(convertedNumber);
 		break;
 
-	case 30:										//negative
+	case neg:										//negate
 		textBox->AppendText("-");
 		toCalculate.append("--");//double minus to show that an item is negative in calc
 		break;
-	
+
 	case divide:
 		textBox->AppendText("/");
 		toCalculate.append("/");
 		break;
-	
+
 	case multiply:
 		textBox->AppendText("*");
 		toCalculate.append("*");
@@ -192,11 +166,11 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		break;
 
 	case equal:
-		
+
 		//textBox->AppendText("=");
 		textBox->Clear();
 		toCalculate.append("="); // shows equation on screen
-		
+
 		answer = _processor->doMath(toCalculate); // calculation
 		result == (int)answer;
 		temp = std::to_string(answer);// convert answer (double) to a string
@@ -216,8 +190,8 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		//	textBox->AppendText("Something didn't work. You probably didn't put in an operator");
 		//	break;
 		//}
-		
-		
+
+
 	case mod:
 		textBox->AppendText("%");
 		toCalculate.append("%");
@@ -227,7 +201,7 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->Clear();
 		toCalculate = "";
 		break;
-	
+
 		break;
 	default:
 
@@ -236,6 +210,3 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 
 
 }
-
-
-

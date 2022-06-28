@@ -1,10 +1,8 @@
 #pragma once
 #include "Calculator.h"
 #include <cstring>
-//#include "IBaseCommand.h"
 #include <vector>
-#include <string>
-#include "ButtonFactory.h"
+
 
 class CalculatorProcessor //: public IBaseCommand
 {
@@ -12,39 +10,29 @@ private:
 	CalculatorProcessor()//empty constructor because we don't want anyone to use this
 	{
 	}
-	static CalculatorProcessor* calc;
+	static CalculatorProcessor* _processor;
 	double baseNumber = 0;
 
 public:
-	//std::vector<IBaseCommand*> commands;
-	//Mod modu;
-	//Divide div;
-	//Multiply mult;
-	//Subtract sub;
-	//Add ad;
-
-	//double Execute(std::string inputNum)
-	//{
-	//	return doMath(inputNum);
-	//}
 
 	static CalculatorProcessor* GetInstance()
 	{
-		if (calc == nullptr)
+		if (_processor == nullptr)
 		{
-			calc = new CalculatorProcessor();
+			_processor = new CalculatorProcessor();
 		}
 
-		return calc;
+		return _processor;
 	}
+
 	void setBaseNumber(double inputNum)
 	{
 		baseNumber = inputNum;
 	}
 
 
-	CalculatorProcessor(CalculatorProcessor& otherProcessor) = delete; //copy constructor deletes because we don't want anyone to use this
-	void operator =(const CalculatorProcessor& otherProcessor) = delete;//assignment constructor deletes because we don't want anyone to use this
+	CalculatorProcessor(CalculatorProcessor& other) = delete; //copy constructor deletes because we don't want anyone to use this
+	void operator =(const CalculatorProcessor& other) = delete;//assignment constructor deletes because we don't want anyone to use this
 
 	std::string getHexadecimal()
 	{
@@ -87,7 +75,7 @@ public:
 		results = "0x" + results;
 		return results;
 	}
-	std::string getBianary()
+	std::string getBinary()
 	{
 		std::string results = "";
 		int number = baseNumber;//just a copy so we don't modify base number
@@ -165,7 +153,7 @@ public:
 
 		if (operand == "+")
 		{
-			answer = num1 + num2; 
+			answer = num1 + num2;
 		}
 		else if (operand == "-")
 		{
@@ -181,8 +169,10 @@ public:
 		}
 		else if (operand == "%")
 		{
-			answer = num1 % num2;
+			answer = fmod(num1, num2);
 		}
 		return answer;
+
 	}
 };
+CalculatorProcessor* CalculatorProcessor::_processor = nullptr;//have to define this else it has an unresolved external symbol error
