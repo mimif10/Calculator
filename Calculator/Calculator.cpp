@@ -227,4 +227,3 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 }
 
 
-CalculatorProcessor* CalculatorProcessor::calc = nullptr;//have to define this else it has an unresolved external symbol error
