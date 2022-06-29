@@ -108,7 +108,7 @@ namespace CalculatorTests
 
 
 		wxFrame* Calc = new wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340));
-		ButtonFactory* factory = new ButtonFactory(Calc);
+		ButtonFactory* factory;
 		//1
 		TEST_METHOD(Button0)
 		{
