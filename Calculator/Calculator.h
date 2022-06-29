@@ -11,14 +11,14 @@ public:
 
 	// Add a Text Box a the top to the window 
 	wxTextCtrl* textBox = nullptr;
+
+private:
 	CalculatorProcessor* _processor;
 	ButtonFactory* factory;
 
-private:
-	
-
 	double result;
 	double answer;
+	double temp;
 	std::string toCalculate;
 
 	// Add buttons to the window 
@@ -51,6 +51,8 @@ private:
 	wxButton* modBtn = nullptr;
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
+
+	void SetTextBox();
 
 	void OnButtonClicked(wxCommandEvent& event);
 

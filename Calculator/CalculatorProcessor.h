@@ -2,7 +2,7 @@
 #include "Calculator.h"
 #include <cstring>
 #include <vector>
-#include "IBaseCommand.h"
+//#include "IBaseCommand.h"
 
 class CalculatorProcessor //: public IBaseCommand
 {
@@ -12,16 +12,14 @@ private:
 	}
 	static CalculatorProcessor* _processor;
 	double baseNumber = 0;
+	double num1 = 0;
+	double num2 = 0;
+	double answer = 0;
+	std::string success;
 
 public:
-	// vector command 
-	std::vector<IBaseCommand*> commands = std::vector<IBaseCommand*>();
-	/*AddCommand add;
-	SubtractCommand sub;
-	MultiplyCommand mult;
-	DivideCommand divide;*/
 
-
+	wxTextCtrl* textBox;
 	static CalculatorProcessor* GetInstance()
 	{
 		if (_processor == nullptr)
@@ -45,23 +43,21 @@ public:
 	CalculatorProcessor(CalculatorProcessor& other) = delete; //copy constructor deletes because we don't want anyone to use this
 	void operator =(const CalculatorProcessor& other) = delete;//assignment constructor deletes because we don't want anyone to use this
 
-	double MathCalc(std::string toDo)//for now only does 2 operands
+	double MathCalc(std::string toCalculate)//for now only does 2 operands
 	{
-		double answer = 0;
-		double num1 = 0;
-		double num2 = 0;
 		std::string left = "";
 		std::string right = "";
 		std::string operand = "";
+
 		//creating the char array to figure out calculations
 		std::vector<char> calculate;
 
 		//getting the operand
-		for (int i = 0; i < toDo.length(); i++)
+		for (int i = 0; i < toCalculate.length(); i++)
 		{
-			calculate.push_back(toDo[i]);
+			calculate.push_back(toCalculate[i]); // add it to the vector
 		}
-		toDo.pop_back();
+		toCalculate.pop_back(); // remove it and fi
 		for (int i = 0; i < calculate.size(); i++)
 		{
 			if (calculate[i] == '+')
@@ -84,53 +80,79 @@ public:
 			{
 				operand = "%";
 			}
+			else if (calculate[i] == '(-)')
+			{
+				operand = "(-)";
+			}
 		}
 		if (operand == "")//have to do this first to check for no operand
 		{
 			return answer = 1.5;//need something to say the operation failed
 		}
 		//splitting out the 2 numbers
-		left = toDo.substr(0, toDo.find(operand));
-		right = toDo.substr(toDo.find(operand) + 1, toDo.length());
+		left = toCalculate.substr(0, toCalculate.find(operand));
+		right = toCalculate.substr(toCalculate.find(operand) + 1, toCalculate.length());
 		num1 = std::stoi(left);
 		num2 = std::stoi(right);
 
 		if (operand == "+")
 		{
 			answer = num1 + num2;
-			/*IBaseCommand* addition = new AddCommand(&num1, &num2);
-			commands.push_back(addition);*/
 		}
 		else if (operand == "-")
 		{
 			answer = num1 - num2;
-			/*IBaseCommand* substract = new SubtractCommand(&num1, &num2);
-			commands.push_back(substract);*/
 		}
 		else if (operand == "*")
 		{
 			answer = num1 * num2;
-			/*IBaseCommand* mult = new MultiplyCommand(&num1, &num2);
-			commands.push_back(mult);*/
 		}
 		else if (operand == "/")
 		{
 			answer = num1 / num2;
-			/*IBaseCommand* Div = new DivideCommand(&num1, &num2);
-			commands.push_back(Div);*/
 		}
 		else if (operand == "%")
 		{
-			answer = fmod(num1, num2);
+			answer = std::fmod(num1, num2);
+		}
+		else if (operand == "(-)")
+		{
+			answer = answer * -1;
+			answer = answer;
 		}
 
-		// loop through commands
-		for (int i = 0; i < commands.size(); i++)
-		{
-			commands[i]->Execute();
-		}
-		commands.clear();
 		return answer;
+	}
+
+	std::string GetDecimal()
+	{
+		// displays a decimal which we use the base number
+		return std::to_string(baseNumber);
+	}
+
+
+	std::string getBinary()
+	{
+		std::string results = "";
+
+		// convert base number to binary
+		int number = baseNumber;//just a copy so we don't modify base number
+
+		for (int i = 0; i < 32; i++) // start with a basenumber of 32 bit
+		{
+			if (number % 2 == 0) // if number is divisiable by 2
+			{
+				results = "0" + results; // even / ends with 0
+			}
+			else//if odd
+			{
+				results = "1" + results; // odd
+			}
+			// update the number in order to process the next number
+			number = number / 2; // Divide it by 2
+		}
+		// process the number 
+		return results;
 	}
 
 	std::string getHexadecimal()
@@ -138,6 +160,7 @@ public:
 		// convert base number to hexadecimal
 		std::string calcAnswer = "";
 		int num = baseNumber;
+
 		while (num > 0)
 		{
 			int mod = num % 16; // some # btween 0 and 16
@@ -176,33 +199,7 @@ public:
 		return calcAnswer;
 	}
 
-	std::string getBinary()
-	{
-		std::string results = "";
 
-		// convert base number to binary
-		int number = baseNumber;//just a copy so we don't modify base number
-
-		for (int i = 0; i < 32; i++) // start with a basenumber of 32 bit
-		{
-			if (number % 2 == 0) // if number is divisiable by 2
-			{
-				results = "0" + results; // even / ends with 0
-			}
-			else//if odd
-			{
-				results = "1" + results; // odd
-			}
-			// update the number in order to process the next number
-			number = number / 2; // Divide it by 2
-		}
-		// process the number 
-		return results;
-	}
-	std::string getDecimal()
-	{
-		return std::to_string(baseNumber);
-	}
 };
 
 CalculatorProcessor* CalculatorProcessor::_processor = nullptr;
