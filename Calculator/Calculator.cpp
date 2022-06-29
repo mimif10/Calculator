@@ -1,56 +1,32 @@
 #include "Calculator.h"
 #include "ButtonFactory.h"
 #include "CalculatorProcessor.h"
-#include "IBaseCommand.h"
+#include <string>
 
 // implement Event Table (begin and end)
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
 // Declare the event button  macroe event button - takes in the first button's windows ID, 
-EVT_BUTTON(200, Calculator::OnButtonClicked) // and link each button eith the ID being clicked to the function we want to call 
-
-// 1st row
-EVT_BUTTON(0, Calculator::OnButtonClicked)
-EVT_BUTTON(1, Calculator::OnButtonClicked)
-EVT_BUTTON(2, Calculator::OnButtonClicked)
-EVT_BUTTON(3, Calculator::OnButtonClicked)
-EVT_BUTTON(1200, Calculator::OnButtonClicked) // Add button
-
-// 2nd row
-EVT_BUTTON(300, Calculator::OnButtonClicked) // dec button
-EVT_BUTTON(4, Calculator::OnButtonClicked)
-EVT_BUTTON(5, Calculator::OnButtonClicked)
-EVT_BUTTON(6, Calculator::OnButtonClicked)
-EVT_BUTTON(1100, Calculator::OnButtonClicked) // substract button
-
-//3rd row
-EVT_BUTTON(400, Calculator::OnButtonClicked) // hex button
-EVT_BUTTON(7, Calculator::OnButtonClicked)
-EVT_BUTTON(8, Calculator::OnButtonClicked)
-EVT_BUTTON(9, Calculator::OnButtonClicked)
-EVT_BUTTON(1000, Calculator::OnButtonClicked) // multiply
-
-// 4th row
-EVT_BUTTON(500, Calculator::OnButtonClicked) // bin
-EVT_BUTTON(600, Calculator::OnButtonClicked) // (-)
-EVT_BUTTON(700, Calculator::OnButtonClicked) // mod
-EVT_BUTTON(800, Calculator::OnButtonClicked) // equal
-EVT_BUTTON(900, Calculator::OnButtonClicked) // divide
-
+EVT_BUTTON(wxID_ANY, OnButtonClicked) // and link each button eith the ID being clicked to the function we want to call 
 wxEND_EVENT_TABLE()
+
+enum IDS // changed to enums to make processor easier
+{
+	zero, one, two, three, four, five, six, seven, eight, nine, bin, hex, dec, divide, multiply, subtract, add, equal, mod, neg, clear
+};
 
 // Window Frame requires some information in order to initialize it (parameters: parent, ID, name, location point, size)
 
 Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340))
-{  
+{
 	// instance of ButtonFactory;
 	ButtonFactory factory = ButtonFactory(this);
+
+	_processor = CalculatorProcessor::GetInstance();
 
 	// create a textbox at the top of the window (parameters: parent (wxFrame), ID, title, starting point, starting size
 	textBox = factory.CreatetextBox();
 
 	// create a button from Calculator.h (parameters: parent (wxFrame), ID, title, starting point, starting size
-
-	//clearBtn = factory.CreateClearBtn(this);
 
 	// 1st row buttons
 	button0 = factory.CreateButton0();
@@ -86,169 +62,61 @@ Calculator::Calculator() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720,
 
 Calculator::~Calculator()
 {
-	
-	
 }
 
-// button Click event - function that handles the button 
-void Calculator::OnButtonClicked(wxCommandEvent& event)
+void Calculator::OnButtonClicked(wxCommandEvent& evt)
+//void cMain::onButtonClicked(wxCommandEvent& evt, wxButton* btnToHandle)
 {
-	int id = event.GetId();
+	int number = evt.GetId();
+	std::string convertedNumber = "";
+	std::string convertAnswer = ""; // to convert number to string at the end
+	wxString txtValue;
 
-	// Use a Switch Statement for each button
-	switch (id)
+	switch (number)
 	{
-	case 200: // clear button
-	{
-		textBox->SetValue("0");
+	case zero://0 button
+		textBox->AppendText("0");
+		toCalculate.append("0");
 		break;
-	}
-	case 0:
-	{
-		/*if (textBox->GetValue() == "0")
-		{*/
-		textBox->SetValue(button0->GetLabel());
-		/*}
-		else
-		{
-			textBox->AppendText("0");
-		}*/
+
+	case one:
+		textBox->AppendText("1");
+		toCalculate.append("1");
 		break;
-	}
-	case 1:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button1->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("1");
-		}
+
+	case two:
+		textBox->AppendText("2");
+		toCalculate.append("2");
 		break;
-	}
-	case 2:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button2->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("2");
-		}
+
+	case three:
+		textBox->AppendText("3");
+		toCalculate.append("3");
 		break;
-	}
-	case 3:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button3->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("3");
-		}
+
+	case four:
+		textBox->AppendText("4");
+		toCalculate.append("4");
 		break;
-	}
-	case 1200: // Add button
-	{
-		textBox->AppendText(" + ");
+
+	case five:
+		textBox->AppendText("5");
+		toCalculate.append("5");
 		break;
-	}
-	case 300: // dec button
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(decBtn->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("dec ");
-		}
+
+	case six:
+		textBox->AppendText("6");
+		toCalculate.append("6");
 		break;
-	}
-	case 4:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button4->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("4");
-		}
+
+	case seven:
+		textBox->AppendText("7");
+		toCalculate.append("7");
 		break;
-	}
-	case 5:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button5->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("5");
-		}
-		break;
-	}
-	case 6:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button6->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("6");
-		}
-		break;
-	}
-	case 1100: // substract button
-	{
-		/*if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(negBtn->GetLabel());
-		}
-		else
-		{*/
-		textBox->AppendText(" - ");
-		break;
-	}
-	case 400: // hex button
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(hexBtn->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("hex ");
-		}
-		break;
-	}
-	case 7:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button7->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("7");
-		}
-		break;
-	}
-	case 8:
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button8->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("8");
-		}
+
+	case eight:
+		textBox->AppendText("8");
+		toCalculate.append("8");
 		break;
 
 	case nine:
@@ -257,47 +125,52 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		break;
 
 	case bin:										//binary
-		_processor->setBaseNumber(answer);
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
 		convertedNumber = _processor->getBinary();
 		textBox->AppendText(convertedNumber);
 		break;
 
 	case hex:										//hexadecimal
-		_processor->setBaseNumber(answer);
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
 		convertedNumber = _processor->getHexadecimal();
 		textBox->AppendText(convertedNumber);
 		break;
 
 	case dec:										//decimal
-		_processor->setBaseNumber(answer);
-		convertedNumber = _processor->getDecimal();
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
+		convertedNumber = _processor->GetDecimal();
 		textBox->AppendText(convertedNumber);
 		break;
 
 	case neg:										//negate
-		textBox->AppendText("-");
-		toCalculate.append("--");//double minus to show that an item is negative in calc
+		txtValue = textBox->GetValue();
+		txtValue.ToDouble(&temp);
+		//temp = temp * -1;
+		textBox->Clear();
+		*textBox << temp;
+		//textBox->AppendText("-");
 		break;
 
 	case divide:
 		textBox->AppendText("/");
 		toCalculate.append("/");
 		break;
-	}
-	case 500: // bin button
-	{
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(binBtn->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("bin ");
-		}
+
+	case multiply:
+		textBox->AppendText("*");
+		toCalculate.append("*");
 		break;
-	}
-	case 600: // neg button
-	{
+
+	case subtract:
 		textBox->AppendText("-");
 		toCalculate.append("-");
 		break;
@@ -313,17 +186,17 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		textBox->Clear();
 		toCalculate.append("="); // shows equation on screen
 
-		answer = _processor->doMath(toCalculate); // calculation
+		answer = _processor->MathCalc(toCalculate); // calculation
 		result == (int)answer;
-		temp = std::to_string(answer);// convert answer (double) to a string
-		toCalculate.append(temp); // add the calculated string to temp (string)
+		convertAnswer = std::to_string(answer);// convert answer (double) to a string
+		toCalculate.append(convertAnswer); // add the calculated string to temp (string)
 		textBox->AppendText(toCalculate); // shows answer on the same screen
 		toCalculate = "";
 		answer = answer;
+
 		/*double prevAnswer;
 		prevAnswer = answer;*/
-		answer = 0;
-
+		//answer = 0;
 		//next = textBox->SetValue("0");
 		//answer = processor->Execute(toCalculate); //decided to just run the excecute function since the other thing doesn't work and doesn't make a lot of sense
 
@@ -338,19 +211,15 @@ void Calculator::OnButtonClicked(wxCommandEvent& event)
 		textBox->AppendText("%");
 		toCalculate.append("%");
 		break;
-	}
-	case 800: // equal button
-	{
-		textBox->AppendText(" = ");
-		break;
-	}
-	case 900: // divide button
-	{
-		textBox->AppendText(" / ");
-		break;
-	}
 
+	case clear:
+		textBox->Clear();
+		toCalculate = "";
+		break;
+
+		break;
+	default:
+
+		break;
 	}
 }
-
-
