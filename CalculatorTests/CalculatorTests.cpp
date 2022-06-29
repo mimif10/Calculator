@@ -62,7 +62,7 @@ namespace CalculatorTests
 		//7
 		TEST_METHOD(Binary2)
 		{
-			int basenumber = 32;
+			int basenumber = 2;
 			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(basenumber);
 			// Convert to string
