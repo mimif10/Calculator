@@ -10,6 +10,7 @@ namespace CalculatorTests
 {
 	TEST_CLASS(CalculatorTests)
 	{
+		CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 	public:
 		// CalculatorProcessor Tests
 		//1
@@ -52,7 +53,6 @@ namespace CalculatorTests
 		TEST_METHOD(Binary)
 		{
 			int basenumber = 32;
-			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(basenumber);
 			// Convert to string
 			std::string result = _processor->getBinary();
@@ -63,7 +63,6 @@ namespace CalculatorTests
 		TEST_METHOD(Binary2)
 		{
 			int basenumber = 2;
-			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(basenumber);
 			// Convert to string
 			std::string result = _processor->getBinary();
@@ -74,7 +73,6 @@ namespace CalculatorTests
 		TEST_METHOD(Hex)
 		{
 			int basenumber = 32;
-			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(basenumber);
 			// Convert to string
 			std::string result = _processor->getHexadecimal();
@@ -85,7 +83,6 @@ namespace CalculatorTests
 		TEST_METHOD(Hex2)
 		{
 			int basenumber = 99;
-			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(basenumber);
 			// Convert to string
 			std::string result = _processor->getHexadecimal();
@@ -96,7 +93,6 @@ namespace CalculatorTests
 		TEST_METHOD(Decimal)
 		{
 			int answer = 15;
-			CalculatorProcessor* _processor = CalculatorProcessor::GetInstance();
 			_processor->setBaseNumber(answer);
 			std::string convertedNum = _processor->GetDecimal();
 			std::string expected = "15";
@@ -104,8 +100,6 @@ namespace CalculatorTests
 		}
 
 		//Button Factory Tests
-			//Button Factory Tests
-
 
 		wxFrame* Calc = new wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(720, 250), wxSize(320, 340));
 		ButtonFactory* factory;
