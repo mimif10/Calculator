@@ -18,8 +18,9 @@ private:
 
 	double result;
 	double answer;
+	double temp;
 	std::string toCalculate;
-	
+
 	// Add buttons to the window 
 	wxButton* clearBtn = nullptr;
 
@@ -51,8 +52,9 @@ private:
 	wxButton* equalBtn = nullptr;
 	wxButton* divideBtn = nullptr;
 
+	void SetTextBox();
+
 	void OnButtonClicked(wxCommandEvent& event);
 
 	wxDECLARE_EVENT_TABLE(); // implement at the top of .cpp file 
 };
-
