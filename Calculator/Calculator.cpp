@@ -1,6 +1,7 @@
 #include "Calculator.h"
 #include "ButtonFactory.h"
 #include "CalculatorProcessor.h"
+#include <string>
 
 // implement Event Table (begin and end)
 wxBEGIN_EVENT_TABLE(Calculator, wxFrame) // takes name of the class for the event and the base class)
@@ -68,7 +69,8 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 {
 	int number = evt.GetId();
 	std::string convertedNumber = "";
-	std::string temp = ""; // to convert number to string at the end
+	std::string convertAnswer = ""; // to convert number to string at the end
+	wxString txtValue;
 
 	switch (number)
 	{
@@ -116,15 +118,51 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 		textBox->AppendText("8");
 		toCalculate.append("8");
 		break;
-	case 9:
-		if (textBox->GetValue() == "0")
-		{
-			textBox->SetValue(button9->GetLabel());
-		}
-		else
-		{
-			textBox->AppendText("9");
-		}
+
+	case nine:
+		textBox->AppendText("9");
+		toCalculate.append("9");
+		break;
+
+	case bin:										//binary
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
+		convertedNumber = _processor->getBinary();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case hex:										//hexadecimal
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
+		convertedNumber = _processor->getHexadecimal();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case dec:										//decimal
+		txtValue = textBox->GetValue(); // Get Value from textbox
+		txtValue.ToDouble(&temp); // convert to string
+		textBox->AppendText(" = ");
+		_processor->setBaseNumber(temp);
+		convertedNumber = _processor->GetDecimal();
+		textBox->AppendText(convertedNumber);
+		break;
+
+	case neg:										//negate
+		txtValue = textBox->GetValue();
+		txtValue.ToDouble(&temp);
+		//temp = temp * -1;
+		textBox->Clear();
+		*textBox << temp;
+		//textBox->AppendText("-");
+		break;
+
+	case divide:
+		textBox->AppendText("/");
+		toCalculate.append("/");
 		break;
 
 	case multiply:
@@ -150,15 +188,15 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 
 		answer = _processor->MathCalc(toCalculate); // calculation
 		result == (int)answer;
-		temp = std::to_string(answer);// convert answer (double) to a string
-		toCalculate.append(temp); // add the calculated string to temp (string)
+		convertAnswer = std::to_string(answer);// convert answer (double) to a string
+		toCalculate.append(convertAnswer); // add the calculated string to temp (string)
 		textBox->AppendText(toCalculate); // shows answer on the same screen
 		toCalculate = "";
 		answer = answer;
+
 		/*double prevAnswer;
 		prevAnswer = answer;*/
-		answer = 0;
-
+		//answer = 0;
 		//next = textBox->SetValue("0");
 		//answer = processor->Execute(toCalculate); //decided to just run the excecute function since the other thing doesn't work and doesn't make a lot of sense
 
@@ -187,3 +225,6 @@ void Calculator::OnButtonClicked(wxCommandEvent& evt)
 
 
 }
+
+
+CalculatorProcessor* CalculatorProcessor::calc = nullptr;//have to define this else it has an unresolved external symbol error
